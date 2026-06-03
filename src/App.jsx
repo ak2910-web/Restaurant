@@ -962,9 +962,9 @@ function FooterSection() {
             <div>
               <h4 className="font-bold text-light-bg mb-4 text-sm uppercase">Follow Us</h4>
               <div className="flex gap-4">
-                <a href="#" className="text-gold hover:text-light-bg transition-colors text-2xl">📷</a>
-                <a href="#" className="text-gold hover:text-light-bg transition-colors text-2xl">👍</a>
-                <a href="#" className="text-gold hover:text-light-bg transition-colors text-2xl">⭐</a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-light-bg transition-colors text-2xl">📷</a>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-light-bg transition-colors text-2xl">👍</a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-light-bg transition-colors text-2xl">⭐</a>
               </div>
             </div>
           </div>

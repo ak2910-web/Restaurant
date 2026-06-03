@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#7B2D42" />
+    <meta name="description" content="La Bella Cucina - Authentic Italian fine dining in Mumbai" />
+    <title>La Bella Cucina - Fine Italian Dining</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              burgundy: '#7B2D42',
+              gold: '#C9933A',
+              'dark-bg': '#0F0D0C',
+              'light-bg': '#FAF7F2',
+            },
+            fontFamily: {
+              playfair: ['Playfair Display', 'serif'],
+              inter: ['Inter', 'sans-serif'],
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0px)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              pulse: {
+                '0%, 100%': { opacity: '1' },
+                '50%': { opacity: '0.5' },
+              },
+            },
+            animation: {
+              fadeIn: 'fadeIn 0.8s ease-out',
+              float: 'float 6s ease-in-out infinite',
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      .font-playfair {
+        font-family: 'Playfair Display', serif;
+      }
+      
+      .gold-underline {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .gold-underline::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: #C9933A;
+        border-radius: 2px;
+      }
+      
+      .card-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      
+      .card-hover:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(201, 147, 58, 0.15);
+      }
+      
+      .gallery-card-hover {
+        transition: transform 0.3s ease;
+      }
+      
+      .gallery-card-hover:hover {
+        transform: scale(1.03);
+      }
+      
+      .nav-blur {
+        backdrop-filter: blur(10px);
+        background-color: rgba(15, 13, 12, 0.8);
+      }
+      
+      .testimonial-quote {
+        font-size: 120px;
+        color: rgba(201, 147, 58, 0.1);
+        line-height: 1;
+        margin-bottom: -30px;
+      }
+      
+      @keyframes fadeInObserver {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      .fade-in-section {
+        animation: fadeInObserver 0.8s ease-out forwards;
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body class="bg-light-bg">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>

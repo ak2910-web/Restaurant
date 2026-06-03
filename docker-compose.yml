@@ -1,0 +1,78 @@
+version: '3.8'
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:7.0
+    container_name: la-bella-cucina-mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+      MONGO_INITDB_DATABASE: la-bella-cucina
+    volumes:
+      - mongodb_data:/data/db
+      - mongodb_config:/data/configdb
+    networks:
+      - la-bella-network
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Node.js Backend API
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: la-bella-cucina-backend
+    ports:
+      - "5000:5000"
+    environment:
+      NODE_ENV: production
+      MONGODB_URI: mongodb://admin:password123@mongodb:27017/la-bella-cucina?authSource=admin
+      MONGODB_USER: admin
+      MONGODB_PASSWORD: password123
+      JWT_SECRET: your_super_secret_jwt_key_change_in_production
+      FRONTEND_URL: http://localhost:3000
+      PORT: 5000
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks:
+      - la-bella-network
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    command: npm run dev
+
+  # React Frontend
+  frontend:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: la-bella-cucina-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      REACT_APP_API_URL: http://localhost:5000/api
+      NODE_ENV: development
+    depends_on:
+      - backend
+    networks:
+      - la-bella-network
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+
+# Volumes
+volumes:
+  mongodb_data:
+  mongodb_config:
+
+# Networks
+networks:
+  la-bella-network:
+    driver: bridge

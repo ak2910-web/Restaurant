@@ -2,6 +2,9 @@ node_modules
 npm-debug.log
 .git
 .gitignore
+backend/
+docker-compose.yml
+Dockerfile
 README.md
 README_SETUP.md
 BUILD_COMPLETE.md

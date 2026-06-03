@@ -2,7 +2,7 @@
   "framework": "create-react-app",
   "buildCommand": "npm run build",
   "devCommand": "npm start",
-  "installCommand": "npm install --no-optional",
+  "installCommand": "npm ci",
   "outputDirectory": "build",
   "env": {
     "CI": "true"
